@@ -2,7 +2,6 @@ package com.order.payment.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.order.payment.constant.LoggerConstants;
@@ -22,15 +21,14 @@ import jakarta.transaction.Transactional;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
-	@Autowired
-	LoggerUtil log;
-
 	private final OrderRepository orderRepository;
 	private final PaymentRepository paymentRepository;
+	private final LoggerUtil log;
 
-	public PaymentServiceImpl(OrderRepository orderRepository, PaymentRepository paymentRepository) {
+	public PaymentServiceImpl(OrderRepository orderRepository, PaymentRepository paymentRepository,LoggerUtil log) {
 		this.orderRepository = orderRepository;
 		this.paymentRepository = paymentRepository;
+		this.log = log;
 	}
 
 	@Override
